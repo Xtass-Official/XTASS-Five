@@ -19,7 +19,7 @@ function BookingForm() {
                 className="w-full border border-gray-200 p-3 pr-10 text-sm appearance-none focus:outline-none focus:border-brand-yellow font-medium select-none"
               >
                 <option value="Instant Ride">Instant Ride</option>
-                <option value="Scheduled Ride">Scheduled Ride</option>
+                <option value="Scheduled Pickup">Scheduled Pickup</option>
                 <option value="Car Rental">Car Rental</option>
               </select>
               <ChevronDown className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -46,7 +46,7 @@ function BookingForm() {
         </div>
 
         {/* Conditional Rows */}
-        {rideType === 'Scheduled Ride' && (
+        {rideType === 'Scheduled Pickup' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
              <div className="flex flex-col">
               <label className="text-sm font-bold text-gray-900 mb-2">Select Date (DD/MM/YYYY)</label>

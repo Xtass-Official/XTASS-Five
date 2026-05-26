@@ -229,7 +229,7 @@ export default function Header() {
             <div className="h-full relative" onMouseEnter={() => handleMouseEnter('services')} onMouseLeave={handleMouseLeave}>
               <button 
                 className={`h-full px-4 text-[13px] uppercase tracking-wide font-bold flex items-center gap-1 transition-colors border-b-2 ${
-                  activeDropdown === 'services' || ['/instant-pickup', '/scheduled-rides', '/airport-transfers', '/one-way-rental', '/long-term-rental', '/weekend-rental', '/group-transportation', '/accessibility'].includes(location.pathname)
+                  activeDropdown === 'services' || ['/instant-pickup', '/scheduled-pickup', '/airport-transfers', '/one-way-rental', '/long-term-rental', '/weekend-rental', '/group-transportation', '/accessibility'].includes(location.pathname)
                   ? 'text-brand-yellow border-brand-yellow' 
                   : 'text-white border-transparent hover:text-brand-yellow hover:border-brand-yellow/50'
                 }`}
@@ -246,7 +246,7 @@ export default function Header() {
                         servicesTab === 'ride' ? 'text-brand-maroon bg-white shadow-[inset_3px_0_0_#800020]' : 'text-gray-600 hover:text-brand-maroon hover:bg-gray-100 border-l-[3px] border-transparent'
                       }`}
                     >
-                      Ride Hailing
+                      Ride Pickup
                       {servicesTab === 'ride' && <ChevronRight className="w-4 h-4 text-brand-maroon" />}
                     </button>
                     <button 
@@ -271,13 +271,13 @@ export default function Header() {
                   <div className="w-3/5 p-5 bg-white flex flex-col gap-1.5 min-h-[220px]">
                     {servicesTab === 'ride' && (
                       <>
-                        <h4 className="text-xs font-black tracking-widest text-gray-400 uppercase mb-2">Ride Hailing Options</h4>
+                        <h4 className="text-xs font-black tracking-widest text-gray-400 uppercase mb-2">Ride Pickup Options</h4>
                         <Link to="/instant-pickup" onClick={() => setActiveDropdown(null)} className="flex flex-col px-3 py-2.5 rounded-sm hover:bg-brand-maroon/5 transition-colors group">
                            <span className="text-sm font-bold text-gray-800 group-hover:text-brand-maroon">Instant Pickup</span>
                            <span className="text-xs text-gray-500 mt-0.5">Book a ride immediately, on-demand</span>
                         </Link>
-                        <Link to="/scheduled-rides" onClick={() => setActiveDropdown(null)} className="flex flex-col px-3 py-2.5 rounded-sm hover:bg-brand-maroon/5 transition-colors group">
-                           <span className="text-sm font-bold text-gray-800 group-hover:text-brand-maroon">Scheduled Rides</span>
+                        <Link to="/scheduled-pickup" onClick={() => setActiveDropdown(null)} className="flex flex-col px-3 py-2.5 rounded-sm hover:bg-brand-maroon/5 transition-colors group">
+                           <span className="text-sm font-bold text-gray-800 group-hover:text-brand-maroon">Scheduled Pickup</span>
                            <span className="text-xs text-gray-500 mt-0.5">Pre-book for future dates</span>
                         </Link>
                         <Link to="/airport-transfers" onClick={() => setActiveDropdown(null)} className="flex flex-col px-3 py-2.5 rounded-sm hover:bg-brand-maroon/5 transition-colors group">
@@ -311,7 +311,7 @@ export default function Header() {
                            <span className="text-xs text-gray-500 mt-0.5">Multi-seater vehicles for teams</span>
                         </Link>
                         <Link to="/accessibility" onClick={() => setActiveDropdown(null)} className="flex flex-col px-3 py-2.5 rounded-sm hover:bg-brand-maroon/5 transition-colors group">
-                           <span className="text-sm font-bold text-gray-800 group-hover:text-brand-maroon">Accessibility Support</span>
+                           <span className="text-sm font-bold text-gray-800 group-hover:text-brand-maroon">Accessibility Transport</span>
                            <span className="text-xs text-gray-500 mt-0.5">Inclusive mobility solutions</span>
                         </Link>
                       </>
@@ -468,10 +468,10 @@ export default function Header() {
               {activeMobileDropdown === 'services' && (
                 <div className="px-4 pb-4 flex flex-col gap-4 animate-in slide-in-from-top-2">
                   <div>
-                    <h4 className="text-xs font-black tracking-widest text-brand-maroon uppercase mb-2 border-b border-gray-200 pb-1">Ride Hailing</h4>
+                    <h4 className="text-xs font-black tracking-widest text-brand-maroon uppercase mb-2 border-b border-gray-200 pb-1">Ride Pickup</h4>
                     <div className="flex flex-col gap-1">
                       <Link to="/instant-pickup" onClick={closeMobileMenu} className="py-2 text-[15px] font-medium text-gray-700">Instant Pickup</Link>
-                      <Link to="/scheduled-rides" onClick={closeMobileMenu} className="py-2 text-[15px] font-medium text-gray-700">Scheduled Rides</Link>
+                      <Link to="/scheduled-pickup" onClick={closeMobileMenu} className="py-2 text-[15px] font-medium text-gray-700">Scheduled Pickup</Link>
                       <Link to="/airport-transfers" onClick={closeMobileMenu} className="py-2 text-[15px] font-medium text-gray-700">Airport Transfers</Link>
                     </div>
                   </div>

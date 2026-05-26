@@ -13,7 +13,7 @@ export default function VehiclePricing() {
             'SUV': { Basic: 80, Economy: 90, Business: 120, Premium: 180 },
             'Van/Minivan': { Basic: 100, Economy: 120, Business: 150, Premium: 200 }
         },
-        'Scheduled Ride': {
+        'Scheduled Pickup': {
             'Sedan': { Basic: 55, Economy: 65, Business: 85, Premium: 125 },
             'SUV': { Basic: 85, Economy: 95, Business: 125, Premium: 185 },
             'Van/Minivan': { Basic: 105, Economy: 125, Business: 155, Premium: 205 }
@@ -25,7 +25,7 @@ export default function VehiclePricing() {
         }
     };
 
-    const tabs = ['Instant Ride', 'Scheduled Ride', 'Car Rental (Daily)'];
+    const tabs = ['Instant Ride', 'Scheduled Pickup', 'Car Rental (Daily)'];
     const vehicleClasses = ['Sedan', 'SUV', 'Van/Minivan'];
     const serviceLevels = ['Basic', 'Economy', 'Business', 'Premium'];
 

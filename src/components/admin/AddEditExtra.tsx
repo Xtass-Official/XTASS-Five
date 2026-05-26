@@ -84,7 +84,7 @@ export default function AddEditExtra() {
                  <div className="md:col-span-2">
                      <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Applicable Ride Types</label>
                      <div className="flex flex-wrap gap-3">
-                         {['Instant Ride', 'Scheduled Ride', 'Car Rental'].map(type => (
+                         {['Instant Ride', 'Scheduled Pickup', 'Car Rental'].map(type => (
                              <label key={type} className="flex items-center space-x-2 bg-gray-50 p-2 border-2 border-gray-200 cursor-pointer hover:border-gray-400">
                                  <input type="checkbox" defaultChecked className="rounded text-red-600 focus:ring-red-500" />
                                  <span className="text-sm font-bold text-gray-900">{type}</span>

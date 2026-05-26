@@ -32,7 +32,7 @@ export default function BookingRulesConfig() {
                                     <input type="number" min="0" defaultValue="2" className="w-24 bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm font-bold p-3 focus:ring-0 focus:border-red-600 transition-colors text-center" />
                                     <span className="ml-3 font-bold text-gray-600 uppercase tracking-widest text-xs">Hours ahead</span>
                                 </div>
-                                <p className="text-[10px] uppercase font-bold text-gray-400 mt-2">For Scheduled Ride bookings.</p>
+                                <p className="text-[10px] uppercase font-bold text-gray-400 mt-2">For Scheduled Pickup bookings.</p>
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Max. Advance Booking Period</label>

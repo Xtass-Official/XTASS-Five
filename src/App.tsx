@@ -35,7 +35,7 @@ import LicensingInformation from './components/LicensingInformation';
 import InsuranceCoverage from './components/InsuranceCoverage';
 import SessionTimeout from './components/SessionTimeout';
 import Register from './components/Register';
-import ScheduledRides from './components/ScheduledRides';
+import ScheduledPickup from './components/ScheduledPickup';
 import SignIn from './components/SignIn';
 import OtpVerification from './components/OtpVerification';
 import LivePhotoLogin from './components/LivePhotoLogin';
@@ -272,7 +272,7 @@ export default function App() {
           <Route path="/recently-viewed" element={<RecentlyViewed />} />
           <Route path="/rental-confirmation" element={<RentalConfirmation />} />
           <Route path="/instant-pickup" element={<InstantPickup />} />
-          <Route path="/scheduled-rides" element={<ScheduledRides />} />
+          <Route path="/scheduled-pickup" element={<ScheduledPickup />} />
           <Route path="/airport-transfers" element={<AirportTransfers />} />
           <Route path="/group-transportation" element={<GroupTransportation />} />
           <Route path="/special-needs-transport" element={<SpecialNeeds />} />

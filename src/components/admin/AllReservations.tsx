@@ -6,7 +6,7 @@ import { Search, Filter, Download, Trash2, ChevronLeft, ChevronRight, Check } fr
 const MOCK_RESERVATIONS = [
   { id: 'XTA-5012', customer: 'Kwame Mensah', type: 'Instant Ride', level: 'Economy', pickup: 'Kotoka Int Airport', date: 'Nov 15, 2024 14:30', status: 'Active', total: 150 },
   { id: 'XTA-5011', customer: 'Sarah Johnson', type: 'Car Rental', level: 'Premium', pickup: 'Osu Oxford Street', date: 'Nov 16, 2024 09:00', status: 'Pending', total: 2400 },
-  { id: 'XTA-5010', customer: 'Michael Osei', type: 'Scheduled Ride', level: 'Business', pickup: 'Kempinski Hotel', date: 'Nov 18, 2024 18:00', status: 'Upcoming', total: 320 },
+  { id: 'XTA-5010', customer: 'Michael Osei', type: 'Scheduled Pickup', level: 'Business', pickup: 'Kempinski Hotel', date: 'Nov 18, 2024 18:00', status: 'Upcoming', total: 320 },
   { id: 'XTA-5009', customer: 'Grace Addo', type: 'Airport Transfer', level: 'Premium', pickup: 'East Legon', date: 'Nov 14, 2024 07:15', status: 'Completed', total: 450 },
   { id: 'XTA-5008', customer: 'David Frimpong', type: 'Car Rental', level: 'Business', pickup: 'Airport Residential', date: 'Nov 10, 2024 10:00', status: 'Cancelled', total: 1200 },
   { id: 'XTA-5007', customer: 'Abena Yeboah', type: 'Instant Ride', level: 'Economy', pickup: 'Spintex Road', date: 'Nov 15, 2024 15:45', status: 'Pending', total: 85 },
@@ -105,7 +105,7 @@ export default function AllReservations() {
                  <select className="pl-3 pr-8 py-2 border border-gray-300 bg-gray-50 font-medium text-sm focus:outline-none focus:ring-1 focus:ring-brand-maroon focus:border-brand-maroon">
                     <option value="All">All Types</option>
                     <option value="Instant Ride">Instant Ride</option>
-                    <option value="Scheduled Ride">Scheduled Ride</option>
+                    <option value="Scheduled Pickup">Scheduled Pickup</option>
                     <option value="Car Rental">Car Rental</option>
                  </select>
               </div>

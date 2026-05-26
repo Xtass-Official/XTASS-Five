@@ -4,7 +4,7 @@ import { ShieldAlert, Save } from 'lucide-react';
 
 export default function CancellationPolicySettings() {
     const [activeTab, setActiveTab] = useState('Instant Ride');
-    const tabs = ['Instant Ride', 'Scheduled Ride', 'Car Rental'];
+    const tabs = ['Instant Ride', 'Scheduled Pickup', 'Car Rental'];
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();

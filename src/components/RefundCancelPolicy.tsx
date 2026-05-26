@@ -43,11 +43,11 @@ export default function RefundCancelPolicy() {
             </p>
           </div>
 
-          {/* Scheduled Ride & Airport */}
+          {/* Scheduled Pickup & Airport */}
           <div className="bg-white p-8 border border-gray-200">
             <div className="flex items-center mb-4">
               <Calendar className="w-8 h-8 text-brand-maroon mr-4" />
-              <h2 className="text-2xl font-black text-gray-900 uppercase tracking-tight">Scheduled Ride Policy</h2>
+              <h2 className="text-2xl font-black text-gray-900 uppercase tracking-tight">Scheduled Pickup Policy</h2>
             </div>
             <p className="text-gray-600 font-medium leading-relaxed">
               For pre-booked rides and airport transfers, cancellations made <strong>at least 12 hours</strong> prior to the scheduled pickup time are fully refunded. Cancellations made within 12 hours of the pickup time will incur a fee equivalent to 50% of the total estimated fare to compensate for the reserved blocks in the driver's schedule.

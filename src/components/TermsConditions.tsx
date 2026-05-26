@@ -122,7 +122,7 @@ export default function TermsConditions() {
           <div id="booking" className="scroll-mt-32 pb-12 mb-12 border-b border-gray-100">
             <h2>2. Booking Terms</h2>
             <p>
-              All reservations initiated through the XTASS platform—whether for Instant Pickup, Scheduled Rides, Airport Transfers, or Car Rentals—are subject to fleet availability and operational confirmation. A booking is not considered legally guaranteed until you receive a final Confirmation Receipt containing a valid Booking Reference ID.
+              All reservations initiated through the XTASS platform—whether for Instant Pickup, Scheduled Pickup, Airport Transfers, or Car Rentals—are subject to fleet availability and operational confirmation. A booking is not considered legally guaranteed until you receive a final Confirmation Receipt containing a valid Booking Reference ID.
             </p>
             <p>
               <strong>Modifications and Cancellations:</strong> Customers may modify or cancel a reservation without penalty provided notice is given at least 24 hours prior to the scheduled pickup time. Modifications requested within 24 hours of the pickup time are subject to vehicle availability and may incur a surcharge. Cancellations made entirely within 24 hours of the pickup time will incur a late cancellation fee equivalent to a one-day rental rate (for rentals) or 50% of the base fare (for transfers), depending on the service selected.

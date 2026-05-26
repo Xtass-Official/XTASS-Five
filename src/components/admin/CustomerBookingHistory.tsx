@@ -16,7 +16,7 @@ export default function CustomerBookingHistory() {
         { id: 'XTA-5012', date: 'Oct 24, 2023', time: '14:30', type: 'Airport Transfer', status: 'Completed', total: 550 },
         { id: 'XTA-4980', date: 'Oct 15, 2023', time: '09:00', type: 'Car Rental', status: 'Completed', total: 1200 },
         { id: 'XTA-4855', date: 'Sep 28, 2023', time: '18:45', type: 'Instant Ride', status: 'Completed', total: 180 },
-        { id: 'XTA-4710', date: 'Sep 10, 2023', time: '08:30', type: 'Scheduled Ride', status: 'Cancelled', total: 0 },
+        { id: 'XTA-4710', date: 'Sep 10, 2023', time: '08:30', type: 'Scheduled Pickup', status: 'Cancelled', total: 0 },
         { id: 'XTA-4600', date: 'Aug 22, 2023', time: '12:00', type: 'Airport Transfer', status: 'Completed', total: 450 },
     ];
 
@@ -79,7 +79,7 @@ export default function CustomerBookingHistory() {
                             <option value="All">All Types</option>
                             <option value="Airport Transfer">Airport Transfer</option>
                             <option value="Instant Ride">Instant Ride</option>
-                            <option value="Scheduled Ride">Scheduled Ride</option>
+                            <option value="Scheduled Pickup">Scheduled Pickup</option>
                             <option value="Car Rental">Car Rental</option>
                         </select>
                     </div>

@@ -1,7 +1,7 @@
 import { Check, Calendar, Clock, Bell, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function ScheduledRides() {
+export default function ScheduledPickup() {
   return (
     <main className="flex-grow">
       {/* Service Hero */}
@@ -17,7 +17,7 @@ export default function ScheduledRides() {
           <div className="max-w-2xl">
             <p className="text-sm font-bold tracking-widest uppercase mb-4 text-gray-300">XTASS Services</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black italic tracking-tight leading-tight mb-6">
-              SCHEDULED RIDES —<br />PLAN AHEAD
+              SCHEDULED PICKUP —<br />PLAN AHEAD
             </h1>
             <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg">
               Book your ride in advance. Choose your exact pickup time, date, and destination, and we'll ensure a driver is waiting for you when you need it.
@@ -36,7 +36,7 @@ export default function ScheduledRides() {
       <section className="py-20 bg-white">
         <div className="max-w-[80rem] mx-auto px-4">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-bold text-brand-maroon mb-6">How Scheduled Rides Work</h2>
+            <h2 className="text-3xl font-bold text-brand-maroon mb-6">How Scheduled Pickup Work</h2>
             
             <div className="space-y-8 mb-12 border-l-2 border-brand-yellow pl-6 ml-2">
               <div className="relative">

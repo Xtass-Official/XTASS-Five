@@ -154,7 +154,7 @@ export default function ManageReservation() {
             <div className="bg-gray-50 border border-gray-200 p-6 text-left max-w-2xl mx-auto my-8">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <span className="bg-brand-maroon text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Scheduled Ride</span>
+                  <span className="bg-brand-maroon text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Scheduled Pickup</span>
                   <h3 className="text-xl font-bold text-gray-900 mt-2">{bookingId.toUpperCase()}</h3>
                 </div>
                 <span className="text-sm font-bold text-green-600 border border-green-600 px-3 py-1 bg-green-50">CONFIRMED</span>

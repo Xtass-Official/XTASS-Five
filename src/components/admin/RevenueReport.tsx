@@ -12,7 +12,7 @@ const revenueOverTime = [
   { p: 'Thu', num: 2780 }, { p: 'Fri', num: 1890 }, { p: 'Sat', num: 2390 }, { p: 'Sun', num: 3490 },
 ];
 const revenueByType = [
-  { name: 'Instant Ride', value: 40000 }, { name: 'Scheduled Ride', value: 30000 }, { name: 'Car Rental', value: 30000 },
+  { name: 'Instant Ride', value: 40000 }, { name: 'Scheduled Pickup', value: 30000 }, { name: 'Car Rental', value: 30000 },
 ];
 const revenueByLevel = [
   { name: 'Premium', amt: 2400 }, { name: 'Business', amt: 1398 }, { name: 'Economy', amt: 9800 }, { name: 'Basic', amt: 3908 },

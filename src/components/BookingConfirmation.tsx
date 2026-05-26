@@ -46,7 +46,7 @@ export default function BookingConfirmation() {
           
           {/* Trip Summary Card */}
           <div className="border border-gray-200 rounded p-6 bg-gray-50 relative">
-             <div className="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] font-black uppercase tracking-widest px-3 py-1">Scheduled Ride</div>
+             <div className="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] font-black uppercase tracking-widest px-3 py-1">Scheduled Pickup</div>
              <h3 className="text-xl font-black text-gray-900 uppercase tracking-tight border-b border-gray-200 pb-4 mb-4">Trip Summary</h3>
              
              <div className="space-y-4">

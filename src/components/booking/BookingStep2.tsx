@@ -7,7 +7,7 @@ export default function BookingStep2() {
 
   // Mocked state from Step 1
   const bookingData = {
-    rideType: 'Scheduled Ride',
+    rideType: 'Scheduled Pickup',
     serviceLevel: 'Premium',
     pickup: 'Kotoka International Airport, Ghana',
     date: 'Mon, 15 Jun 2026',

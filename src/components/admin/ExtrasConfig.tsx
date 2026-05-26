@@ -49,7 +49,7 @@ export default function ExtrasConfig() {
                                 </label>
                             </div>
                             <div className="flex items-center justify-between p-4 bg-gray-50 border-2 border-gray-200">
-                                <span className="font-bold text-gray-900">Scheduled Ride</span>
+                                <span className="font-bold text-gray-900">Scheduled Pickup</span>
                                 <label className="relative inline-flex items-center cursor-pointer">
                                     <input type="checkbox" defaultChecked className="sr-only peer" />
                                     <div className="w-12 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-[2px] after:bg-white after:border-gray-400 after:border after:rounded-full after:h-4 after:w-5 after:transition-all peer-checked:bg-brand-maroon"></div>

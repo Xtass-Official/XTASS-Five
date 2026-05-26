@@ -177,8 +177,8 @@ export const sitemapData: SitemapSection[] = [
       },
       {
         "num": "27.",
-        "to": "/scheduled-rides",
-        "title": "Scheduled Rides",
+        "to": "/scheduled-pickup",
+        "title": "Scheduled Pickup",
         "description": "Plan and pre-book your ride for any future date and time"
       },
       {
@@ -239,7 +239,7 @@ export const sitemapData: SitemapSection[] = [
         "num": "37.",
         "to": "/vehicle-detail/v1",
         "title": "Vehicle Detail",
-        "description": "Full specification sheet for a ride-hailing vehicle"
+        "description": "Full specification sheet for a ride-pickup vehicle"
       },
       {
         "num": "38.",

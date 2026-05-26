@@ -50,7 +50,7 @@ export default function BookingDetail() {
                   Upcoming
                 </span>
               </div>
-              <p className="text-gray-300 font-medium">Scheduled Ride • Business Class</p>
+              <p className="text-gray-300 font-medium">Scheduled Pickup • Business Class</p>
             </div>
             {isUpcoming && !driverAssigned && (
               <div className="flex shrink-0 gap-3">

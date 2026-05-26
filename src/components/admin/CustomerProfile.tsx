@@ -121,7 +121,7 @@ export default function CustomerProfile() {
                                             { id: 'XTA-5012', date: 'Oct 24, 2023 - 14:30', type: 'Airport Transfer', status: 'Completed', total: 550 },
                                             { id: 'XTA-4980', date: 'Oct 15, 2023 - 09:00', type: 'Car Rental', status: 'Completed', total: 1200 },
                                             { id: 'XTA-4855', date: 'Sep 28, 2023 - 18:45', type: 'Instant Ride', status: 'Completed', total: 180 },
-                                            { id: 'XTA-4710', date: 'Sep 10, 2023 - 08:30', type: 'Scheduled Ride', status: 'Cancelled', total: 0 },
+                                            { id: 'XTA-4710', date: 'Sep 10, 2023 - 08:30', type: 'Scheduled Pickup', status: 'Cancelled', total: 0 },
                                         ].map((booking) => (
                                             <tr key={booking.id} className="hover:bg-gray-50">
                                                 <td className="p-4">

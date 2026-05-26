@@ -56,7 +56,7 @@ export default function RateDashboard() {
 
                 {/* Tabs */}
                 <div className="flex border-b-4 border-gray-900 mb-8 overflow-x-auto">
-                    {['Instant Ride', 'Scheduled Ride', 'Car Rental'].map((tab) => (
+                    {['Instant Ride', 'Scheduled Pickup', 'Car Rental'].map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}

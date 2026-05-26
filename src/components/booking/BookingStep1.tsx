@@ -6,7 +6,7 @@ import BookingProgress from './BookingProgress';
 export default function BookingStep1() {
   const navigate = useNavigate();
   // Form State
-  const [rideType] = useState('Scheduled Ride'); // Read-only chip as requested
+  const [rideType] = useState('Scheduled Pickup'); // Read-only chip as requested
   const [serviceLevel, setServiceLevel] = useState('Premium');
   const [pickup, setPickup] = useState('Kotoka International Airport (ACC)');
   const [returnDifferent, setReturnDifferent] = useState(true);

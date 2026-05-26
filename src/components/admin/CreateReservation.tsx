@@ -86,7 +86,7 @@ export default function CreateReservation() {
                 <select className="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm font-bold p-3 focus:ring-0 focus:border-red-600 transition-colors appearance-none">
                   <option>Airport Transfer</option>
                   <option>Instant Ride</option>
-                  <option>Scheduled Ride</option>
+                  <option>Scheduled Pickup</option>
                   <option>Car Rental</option>
                   <option>Group Transport</option>
                 </select>

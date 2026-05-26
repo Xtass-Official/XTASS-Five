@@ -35,7 +35,7 @@ const MOCK_HISTORY: TripHistoryEntry[] = [
     time: '09:00 AM',
     pickup: 'Osu Oxford Street',
     dropoff: 'West Hills Mall',
-    type: 'Scheduled Ride',
+    type: 'Scheduled Pickup',
     driver: 'Emmanuel',
     status: 'Completed',
     fare: 'GH₵ 85.50'

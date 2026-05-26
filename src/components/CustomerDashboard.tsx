@@ -74,7 +74,7 @@ export default function CustomerDashboard() {
               <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-maroon/10 transition-colors">
                 <Calendar className="w-8 h-8 text-brand-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 uppercase tracking-tight mb-2">Scheduled Ride</h3>
+              <h3 className="text-xl font-bold text-gray-900 uppercase tracking-tight mb-2">Scheduled Pickup</h3>
               <p className="text-sm text-gray-500 font-medium">Book a chauffeur for a future date & time.</p>
             </div>
 
@@ -103,7 +103,7 @@ export default function CustomerDashboard() {
              {[1, 2, 3].map((item) => (
                 <div key={item} className="bg-white border border-gray-200 p-6 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest bg-gray-100 px-2 py-1 rounded">Scheduled Ride</span>
+                    <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest bg-gray-100 px-2 py-1 rounded">Scheduled Pickup</span>
                     <span className="text-xs font-bold text-gray-400">May {10 + item}, 2026</span>
                   </div>
                   

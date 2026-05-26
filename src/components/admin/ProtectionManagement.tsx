@@ -6,7 +6,7 @@ import { Shield, Plus, Edit } from 'lucide-react';
 const MOCK_PROTECTIONS = [
     { id: 'PR-1', name: 'Standard Damage Waiver', desc: 'Limits liability to GH₵ 2,000 for standard vehicles.', price: 50, types: 'Car Rental', status: true },
     { id: 'PR-2', name: 'Premium Damage Waiver', desc: 'Zero excess liability for collision damage.', price: 120, types: 'Car Rental', status: true },
-    { id: 'PR-3', name: 'Roadside Assistance Plus', desc: '24/7 towing and flat tire support.', price: 25, types: 'Car Rental, Scheduled Ride', status: true },
+    { id: 'PR-3', name: 'Roadside Assistance Plus', desc: '24/7 towing and flat tire support.', price: 25, types: 'Car Rental, Scheduled Pickup', status: true },
     { id: 'PR-4', name: 'Personal Accident Cover', desc: 'Medical coverage for driver and passengers.', price: 40, types: 'All Rides', status: false },
 ];
 

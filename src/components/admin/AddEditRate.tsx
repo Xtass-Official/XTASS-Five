@@ -43,7 +43,7 @@ export default function AddEditRate() {
                      <select required className="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 text-sm font-bold p-3 focus:ring-0 focus:border-red-600 transition-colors appearance-none">
                         <option value="">Select Type</option>
                         <option value="Instant Ride">Instant Ride</option>
-                        <option value="Scheduled Ride">Scheduled Ride</option>
+                        <option value="Scheduled Pickup">Scheduled Pickup</option>
                         <option value="Car Rental">Car Rental</option>
                      </select>
                  </div>

@@ -17,7 +17,7 @@ interface Booking {
 const MOCK_BOOKINGS: Booking[] = [
   {
     id: 'XTA-12345',
-    type: 'Scheduled Ride',
+    type: 'Scheduled Pickup',
     status: 'Upcoming',
     pickup: 'Kotoka International Airport (ACC)',
     dropoff: 'Kempinski Hotel Gold Coast City',
@@ -50,7 +50,7 @@ const MOCK_BOOKINGS: Booking[] = [
   },
   {
     id: 'XTA-55555',
-    type: 'Scheduled Ride',
+    type: 'Scheduled Pickup',
     status: 'Cancelled',
     pickup: 'Labadi Beach Hotel',
     dropoff: 'Kotoka International Airport (ACC)',

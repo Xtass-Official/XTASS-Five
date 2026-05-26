@@ -4,7 +4,7 @@ import { Save, Navigation, Plus, Image as ImageIcon } from 'lucide-react';
 
 export default function ServicePagesEditor() {
     const [activeService, setActiveService] = useState('Instant Pickup');
-    const services = ['Instant Pickup', 'Scheduled Rides', 'Airport Transfers', 'Group Transportation', 'Special Needs Transport'];
+    const services = ['Instant Pickup', 'Scheduled Pickup', 'Airport Transfers', 'Group Transportation', 'Special Needs Transport'];
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();

@@ -23,11 +23,11 @@ const BOOKING_TREND_DATA = [
 const RECENT_BOOKINGS = [
   { id: 'XTA-5012', customer: 'Kwame Mensah', type: 'Instant Ride', status: 'Active', total: 150 },
   { id: 'XTA-5011', customer: 'Sarah Johnson', type: 'Car Rental', status: 'Pending', total: 2400 },
-  { id: 'XTA-5010', customer: 'Michael Osei', type: 'Scheduled Ride', status: 'Upcoming', total: 320 },
+  { id: 'XTA-5010', customer: 'Michael Osei', type: 'Scheduled Pickup', status: 'Upcoming', total: 320 },
   { id: 'XTA-5009', customer: 'Grace Addo', type: 'Airport Transfer', status: 'Completed', total: 450 },
   { id: 'XTA-5008', customer: 'David Frimpong', type: 'Car Rental', status: 'Active', total: 1200 },
   { id: 'XTA-5007', customer: 'Anita Yeboah', type: 'Instant Ride', status: 'Completed', total: 180 },
-  { id: 'XTA-5006', customer: 'John Appiah', type: 'Scheduled Ride', status: 'Pending', total: 350 },
+  { id: 'XTA-5006', customer: 'John Appiah', type: 'Scheduled Pickup', status: 'Pending', total: 350 },
   { id: 'XTA-5005', customer: 'Mercy Baidoo', type: 'Airport Transfer', status: 'Active', total: 500 },
   { id: 'XTA-5004', customer: 'Samuel Owusu', type: 'Group Transport', status: 'Upcoming', total: 1600 },
   { id: 'XTA-5003', customer: 'Linda Ofori', type: 'Car Rental', status: 'Completed', total: 3200 },

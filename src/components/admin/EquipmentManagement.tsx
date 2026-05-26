@@ -6,7 +6,7 @@ import { Box, Plus, Edit } from 'lucide-react';
 const MOCK_EQUIPMENT = [
     { id: 'EQ-1', name: 'GPS Navigation System', desc: 'Standalone Garmin or TomTom device.', price: 15, types: 'Car Rental', qty: 20, status: true },
     { id: 'EQ-2', name: 'Child Safety Seat (Toddler)', desc: 'Rear or forward facing up to 18kg.', price: 20, types: 'All Rides', qty: 15, status: true },
-    { id: 'EQ-3', name: '4G WiFi Hotspot', desc: 'Portable router with 5GB daily limit.', price: 30, types: 'Car Rental, Scheduled Ride', qty: 10, status: true },
+    { id: 'EQ-3', name: '4G WiFi Hotspot', desc: 'Portable router with 5GB daily limit.', price: 30, types: 'Car Rental, Scheduled Pickup', qty: 10, status: true },
     { id: 'EQ-4', name: 'Roof Rack Cargo Carrier', desc: 'Extra storage for luggage on SUV mounts.', price: 40, types: 'Car Rental (SUV only)', qty: 5, status: false },
 ];
 
