@@ -1,121 +1,350 @@
 import { Car, CheckCircle, ChevronDown, CalendarCheck, Search } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function BookingForm() {
-  const [rideType, setRideType] = useState('Instant Ride');
-  
+  const [rideType, setRideType] = useState('Instant Pickup');
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
+
   return (
     <div className="relative z-10 max-w-[64rem] mx-auto px-4 -mt-24 mb-16">
-      <div className="bg-white p-8 shadow-2xl border border-gray-100">
+      <form onSubmit={handleBookingSubmit} className="bg-white p-8 shadow-2xl border border-gray-100">
         
-        {/* Row 1 - Common */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex flex-col">
-            <label className="text-sm font-bold text-gray-900 mb-2">Types of Ride</label>
-            <div className="relative">
-              <select 
-                value={rideType}
-                onChange={(e) => setRideType(e.target.value)}
-                className="w-full border border-gray-200 p-3 pr-10 text-sm appearance-none focus:outline-none focus:border-brand-yellow font-medium select-none"
-              >
-                <option value="Instant Ride">Instant Ride</option>
-                <option value="Scheduled Pickup">Scheduled Pickup</option>
-                <option value="Car Rental">Car Rental</option>
-              </select>
-              <ChevronDown className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-            </div>
-          </div>
-          
-          <div className="flex flex-col">
-            <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Location</label>
-            <input 
-              type="text" 
-              placeholder="Kotoka International Airport, Ghana."
-              className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
-            />
-          </div>
-          
-          <div className="flex flex-col">
-            <label className="text-sm font-bold text-gray-900 mb-2">Drop Off location</label>
-            <input 
-              type="text" 
-              placeholder="East Legon, Accra."
-              className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
-            />
+        <div className="mb-6">
+          <label className="text-sm font-bold text-gray-900 mb-2 block">Type of Ride</label>
+          <div className="relative">
+            <select 
+              value={rideType}
+              onChange={(e) => setRideType(e.target.value)}
+              className="w-full border border-gray-200 p-3 pr-10 text-sm appearance-none focus:outline-none focus:border-brand-yellow font-medium select-none"
+            >
+              <option value="Instant Pickup">Instant Pickup</option>
+              <option value="Scheduled Pickup">Scheduled Pickup</option>
+              <option value="Airport Transfers">Airport Transfers</option>
+              <option value="One-Way Rental">One-Way Rental</option>
+              <option value="Long-Term Rental">Long-Term Rental</option>
+              <option value="Weekend Rental">Weekend Rental</option>
+              <option value="Group Transportation">Group Transportation</option>
+              <option value="Accessibility Transport">Accessibility Transport</option>
+            </select>
+            <ChevronDown className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
 
-        {/* Conditional Rows */}
-        {rideType === 'Scheduled Pickup' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-             <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-900 mb-2">Select Date (DD/MM/YYYY)</label>
-              <input 
-                type="text" 
-                placeholder="DD/MM/2025"
-                className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
-              />
-            </div>
-             <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-900 mb-2">Time</label>
-               <div className="relative">
-                <select defaultValue="" className="w-full border border-gray-200 p-3 pr-10 text-sm appearance-none focus:outline-none focus:border-brand-yellow font-medium">
-                  <option value="" disabled>Select Time</option>
-                  <option value="12:00 PM">12:00 PM</option>
-                  <option value="12:30 PM">12:30 PM</option>
-                  <option value="01:00 PM">01:00 PM</option>
-                </select>
-                <ChevronDown className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+        {/* Custom Fields per Ride Type */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {rideType === 'Instant Pickup' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Location</label>
+                <input type="text" defaultValue="East Legon, Accra" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
               </div>
-            </div>
-          </div>
-        )}
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop Off Location</label>
+                <input type="text" defaultValue="Kotoka International Airport" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Service Class</label>
+                 <select defaultValue="Premium" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="Premium">Premium</option>
+                   <option value="Business">Business</option>
+                   <option value="Economy">Economy</option>
+                   <option value="Basic">Basic</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Passengers</label>
+                 <select defaultValue="1" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="1">1 Passenger</option>
+                   <option value="2">2 Passengers</option>
+                   <option value="3">3 Passengers</option>
+                   <option value="4+">4+ Passengers</option>
+                 </select>
+              </div>
+            </>
+          )}
 
-        {rideType === 'Car Rental' && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Date</label>
-              <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
-            </div>
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Time</label>
-              <input type="time" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
-            </div>
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-900 mb-2">Return Date</label>
-              <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
-            </div>
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-gray-900 mb-2">Return Time</label>
-              <input type="time" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
-            </div>
-          </div>
-        )}
+          {rideType === 'Scheduled Pickup' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Date</label>
+                <input type="date" defaultValue="2025-06-15" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Time</label>
+                <input type="time" defaultValue="14:30" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Location</label>
+                <input type="text" defaultValue="Kempinski Hotel Gold Coast City" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop Off Location</label>
+                <input type="text" defaultValue="Accra International Conference Centre" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Service Class</label>
+                 <select defaultValue="Business" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="Premium">Premium</option>
+                   <option value="Business">Business</option>
+                   <option value="Economy">Economy</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Passengers</label>
+                 <select defaultValue="2" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="1">1 Passenger</option>
+                   <option value="2">2 Passengers</option>
+                   <option value="3">3 Passengers</option>
+                   <option value="4+">4+ Passengers</option>
+                 </select>
+              </div>
+            </>
+          )}
 
-        {/* Bottom Row - Passengers and CTA */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 items-end">
-          <div className="flex flex-col">
-            <label className="text-sm font-bold text-gray-900 mb-2">Passengers</label>
-             <div className="relative">
-              <select defaultValue="" className="w-full border border-gray-200 p-3 pr-10 text-sm appearance-none focus:outline-none focus:border-brand-yellow font-medium">
-                <option value="" disabled>No. of Passengers</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4+">4+</option>
-              </select>
-              <ChevronDown className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-            </div>
-          </div>
+          {rideType === 'Airport Transfers' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Direction</label>
+                 <select defaultValue="From Airport" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="To Airport">To Airport</option>
+                   <option value="From Airport">From Airport</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Airport</label>
+                 <select defaultValue="Kotoka Int'l Airport" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                  <option value="Kotoka Int'l Airport">Kotoka Int'l Airport</option>
+                  <option value="Kumasi Airport">Kumasi Airport</option>
+                  <option value="Tamale Airport">Tamale Airport</option>
+                  <option value="Takoradi Airport">Takoradi Airport</option>
+                  <option value="Wa Airport">Wa Airport</option>
+                  <option value="Sunyani Airport">Sunyani Airport</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Address / Hotel</label>
+                <input type="text" defaultValue="Labadi Beach Hotel" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Flight Number</label>
+                <input type="text" defaultValue="BA081" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Date</label>
+                <input type="date" defaultValue="2025-06-20" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Time (Arrival/Departure)</label>
+                <input type="time" defaultValue="10:00" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Passengers</label>
+                 <select defaultValue="2 Passengers" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="1 Passenger">1 Passenger</option>
+                   <option value="2 Passengers">2 Passengers</option>
+                   <option value="3-4 Passengers">3-4 Passengers</option>
+                   <option value="5+ Passengers">5+ Passengers</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Luggage</label>
+                 <select defaultValue="2 Large, 1 Small" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="Carry-on Only">Carry-on Only</option>
+                   <option value="1-2 Large Bags">1-2 Large Bags</option>
+                   <option value="2 Large, 1 Small">2 Large, 1 Small</option>
+                   <option value="Lots of Luggage">Lots of Luggage</option>
+                 </select>
+              </div>
+            </>
+          )}
 
-          <div className="md:col-span-2">
-            <button className="w-full bg-brand-yellow hover:bg-brand-yellow-hover text-brand-maroon font-bold text-lg py-3.5 transition-colors">
-              Book Now
-            </button>
-          </div>
+          {rideType === 'One-Way Rental' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pickup Location</label>
+                <input type="text" defaultValue="Accra" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop-Off Location</label>
+                <input type="text" defaultValue="Kumasi" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pickup Date</label>
+                <input type="date" defaultValue="2025-06-01" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pickup Time</label>
+                <input type="time" defaultValue="09:00" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop-Off Date</label>
+                <input type="date" defaultValue="2025-06-03" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop-Off Time</label>
+                <input type="time" defaultValue="14:00" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+            </>
+          )}
+
+          {rideType === 'Long-Term Rental' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Location</label>
+                <input type="text" defaultValue="Accra Main Branch" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Rental Type</label>
+                 <select defaultValue="Monthly (30+ Days)" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="Monthly (30+ Days)">Monthly (30+ Days)</option>
+                   <option value="Weekly (7-28 Days)">Weekly (7-28 Days)</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Start Date</label>
+                <input type="date" defaultValue="2025-07-01" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Duration</label>
+                 <select defaultValue="1 Month" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="1 Week">1 Week</option>
+                   <option value="2 Weeks">2 Weeks</option>
+                   <option value="1 Month">1 Month</option>
+                   <option value="2 Months">2 Months</option>
+                   <option value="3+ Months">3+ Months</option>
+                 </select>
+              </div>
+              <div className="flex flex-col md:col-span-2">
+                <label className="text-sm font-bold text-gray-900 mb-2">Vehicle Preference</label>
+                 <select defaultValue="Executive Sedan" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="Executive Sedan">Executive Sedan</option>
+                   <option value="Luxury SUV">Luxury SUV</option>
+                   <option value="Corporate Minivan">Corporate Minivan</option>
+                   <option value="Compact Economy">Compact Economy</option>
+                 </select>
+              </div>
+            </>
+          )}
+
+          {rideType === 'Weekend Rental' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pickup Location</label>
+                <input type="text" defaultValue="Accra Mall" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop-Off Location</label>
+                <input type="text" defaultValue="Kotoka Int'l Airport" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pickup Date</label>
+                <input type="date" defaultValue="2025-06-06" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pickup Time</label>
+                <input type="time" defaultValue="17:00" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Return Date</label>
+                <input type="date" defaultValue="2025-06-08" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Return Time</label>
+                <input type="time" defaultValue="18:00" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+            </>
+          )}
+
+          {rideType === 'Group Transportation' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Event / Pickup Location</label>
+                <input type="text" defaultValue="Accra International Conference Centre" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Destination Location</label>
+                <input type="text" defaultValue="Peduase Lodge" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Passengers</label>
+                 <select defaultValue="10-20 Passengers" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="5-9 Passengers">5-9 Passengers</option>
+                   <option value="10-20 Passengers">10-20 Passengers</option>
+                   <option value="20-50 Passengers">20-50 Passengers</option>
+                   <option value="50+ Passengers">50+ Passengers</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Event Type</label>
+                 <select defaultValue="Conference / Corporate" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="Conference / Corporate">Conference / Corporate</option>
+                   <option value="Wedding / Celebration">Wedding / Celebration</option>
+                   <option value="Tour / Sightseeing">Tour / Sightseeing</option>
+                   <option value="Airport Group Transfer">Airport Group Transfer</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Start Date</label>
+                <input type="date" defaultValue="2025-08-10" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">End Date (Optional)</label>
+                <input type="date" defaultValue="2025-08-12" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+            </>
+          )}
+
+          {rideType === 'Accessibility Transport' && (
+            <>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Location</label>
+                <input type="text" defaultValue="Korle Bu Teaching Hospital" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop Off Location</label>
+                <input type="text" defaultValue="Cantonments" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Date</label>
+                <input type="date" defaultValue="2025-06-12" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date" />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Time</label>
+                <input type="time" defaultValue="10:30" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow" />
+              </div>
+              <div className="flex flex-col md:col-span-2">
+                <label className="text-sm font-bold text-gray-900 mb-2">Special Requirements</label>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                   <select defaultValue="Wheelchair Accessible Van" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="Wheelchair Accessible Van">Wheelchair Accessible Van (Ramp Equipped)</option>
+                     <option value="Transfer Assistance to Sedan">Transfer Assistance to Premium Sedan</option>
+                     <option value="Child Safety Seat">Child Safety Seat Required</option>
+                   </select>
+                   <select defaultValue="No additional mobility aides" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="No additional mobility aides">No additional mobility aides</option>
+                     <option value="Traveling with Service Animal">Traveling with Service Animal</option>
+                     <option value="Walker / Crutches Support">Walker / Crutches Storage</option>
+                     <option value="Vision/Hearing Impaired Assistance">Vision/Hearing Impaired Assistance</option>
+                   </select>
+                 </div>
+              </div>
+            </>
+          )}
         </div>
 
-      </div>
+        <div className="mt-8">
+          <button type="submit" className="w-full bg-brand-yellow hover:bg-brand-yellow-hover text-brand-maroon font-bold text-lg py-3.5 transition-colors uppercase tracking-wide">
+            Book {rideType}
+          </button>
+        </div>
+
+      </form>
     </div>
   );
 }
@@ -182,6 +411,8 @@ function FAQAccordion() {
 }
 
 export default function MainContent() {
+  const navigate = useNavigate();
+
   return (
     <main>
       <HeroSection />
@@ -200,7 +431,10 @@ export default function MainContent() {
               <p className="text-gray-600 leading-relaxed mb-8 text-base md:text-lg">
                 Reserve shared ride or private airport transportation in your departure and destination city. Vans, sedans, or SUVs.
               </p>
-              <button className="bg-brand-maroon-dark text-white font-bold py-3 px-10 text-sm hover:bg-brand-maroon transition-colors tracking-wide">
+              <button 
+                onClick={() => navigate('/airport-transfers')}
+                className="bg-brand-maroon-dark text-white font-bold py-3 px-10 text-sm hover:bg-brand-maroon transition-colors tracking-wide"
+              >
                 AIRPORT RIDES
               </button>
             </div>
@@ -221,7 +455,10 @@ export default function MainContent() {
               <p className="text-white/90 leading-relaxed mb-8 text-base md:text-lg">
                 Travel on your schedule with a private driver. Book by the hour or choose point-to-point transfers.
               </p>
-              <button className="bg-white text-brand-maroon-dark font-bold py-3 px-10 text-sm hover:bg-gray-100 transition-colors tracking-wide">
+              <button 
+                onClick={() => navigate('/start-reservation')}
+                className="bg-white text-brand-maroon-dark font-bold py-3 px-10 text-sm hover:bg-gray-100 transition-colors tracking-wide"
+              >
                 PRIVATE CAR SERVICE
               </button>
             </div>
@@ -311,7 +548,11 @@ export default function MainContent() {
           <p className="text-gray-500 mb-12 text-lg">Connecting you to major airports across Ghana. Your journey, our priority.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto">
             {["Kotoka Int'l Airport", "Tamale Airport", "Takoradi Airport", "Kumasi Airport", "Wa Airport", "Sunyani Airport"].map((airport) => (
-              <button key={airport} className="bg-brand-maroon-dark hover:bg-brand-maroon-hover text-white font-bold py-4 px-2 text-sm md:text-base transition-colors shadow-sm">
+              <button 
+                key={airport}
+                onClick={() => navigate('/airport-transfers')}
+                className="bg-brand-maroon-dark hover:bg-brand-maroon-hover text-white font-bold py-4 px-2 text-sm md:text-base transition-colors shadow-sm"
+              >
                 {airport}
               </button>
             ))}

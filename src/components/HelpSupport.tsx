@@ -1,7 +1,8 @@
 import { Phone, Mail, MessageCircle, MessageSquare, ExternalLink, HelpCircle, FileText } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function HelpSupport() {
+  const navigate = useNavigate();
   return (
     <main className="flex-grow bg-gray-50 pb-24">
       {/* Header Area */}
@@ -49,7 +50,7 @@ export default function HelpSupport() {
               </div>
             </a>
 
-            <button onClick={() => alert("Opening Live Chat...")} className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-6 group flex items-start text-left w-full">
+            <button onClick={() => navigate('/report-issue')} className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-6 group flex items-start text-left w-full">
               <div className="w-12 h-12 bg-brand-yellow/20 rounded-full flex items-center justify-center mr-4 shrink-0">
                 <MessageSquare className="w-6 h-6 text-brand-yellow drop-shadow-sm" />
               </div>
@@ -79,7 +80,7 @@ export default function HelpSupport() {
                 </div>
              </Link>
 
-             <button onClick={() => alert("Opening Issue Report Form...")} className="bg-white border-2 border-gray-200 p-6 flex flex-col md:flex-row md:items-center justify-between hover:border-gray-900 transition-colors group text-left w-full">
+             <button onClick={() => navigate('/report-issue')} className="bg-white border-2 border-gray-200 p-6 flex flex-col md:flex-row md:items-center justify-between hover:border-gray-900 transition-colors group text-left w-full">
                 <div className="flex items-center mb-4 md:mb-0">
                   <FileText className="w-8 h-8 text-gray-900 mr-4" />
                   <div>

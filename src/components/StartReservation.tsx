@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { Calendar, Clock, MapPin, Users, HelpCircle, ShieldCheck, Map, ArrowRight } from 'lucide-react';
 
 export default function StartReservation() {
@@ -18,6 +18,13 @@ export default function StartReservation() {
 
   const handleDestinationClick = (dest: string) => {
     setPickup(dest);
+  };
+
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
   };
 
   return (
@@ -39,7 +46,7 @@ export default function StartReservation() {
               High-demand dates approaching. Reserve now.
             </div>
             <div className="p-8">
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form onSubmit={handleSearchSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                   <div className="lg:col-span-2">
                     <label className="block text-sm font-bold text-gray-900 mb-2">Ride Type</label>

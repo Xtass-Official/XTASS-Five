@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   CalendarDays, 
   Infinity as InfinityIcon, 
@@ -9,6 +9,13 @@ import {
 } from 'lucide-react';
 
 export default function LongTermRental() {
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
+
   const heroStyle = {
     backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAq-EQ8QgjRQMkuDgI6TCcf5kf9F8eNFVRmjJvmt1uQ-Br6f4Z2Cmm4eEikZFkBowk7Smhx7yPEBf5smC1lLNMBWMUsWVdNUTYWRJ9pxfRjsNBou60uEA2yA8uoleT2_LvCiK8BbfaxITQX_V72Ui-V5mIi90wAkCboEVp6hZO6ld7AoH9N5_YwH4p1I9dlTeX_NPnr6Pd-oSyhAwHiA-L7-hjuGMnW0zXPCwKJ1lEzHT_hzqqQIp9T7p1hW57V7XMnSwW9aAvAzCk")',
     backgroundSize: 'cover',
@@ -37,44 +44,64 @@ export default function LongTermRental() {
             {/* Reservation Form Card */}
             <div className="bg-white/95 backdrop-blur-md p-8 rounded-none shadow-2xl border border-white/20">
               <h3 className="text-2xl font-bold text-brand-maroon mb-6">Start a Long-Term Reservation</h3>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-4" onSubmit={handleBookingSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-sm font-bold text-gray-700 block">Pickup Location</label>
+                    <label className="text-sm font-bold text-gray-700 block">Location</label>
                     <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
                       <input 
                         type="text" 
-                        placeholder="Kotoka Int'l Airport" 
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-none focus:border-brand-maroon focus:ring-1 focus:ring-brand-maroon outline-none transition-all placeholder:text-gray-400 text-sm"
+                        defaultValue="Accra Main Branch"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-none focus:border-brand-maroon outline-none transition-all text-sm"
                       />
                     </div>
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-bold text-gray-700 block">Rental Type</label>
-                    <select className="w-full px-4 py-3 border border-gray-300 rounded-none focus:border-brand-maroon focus:ring-1 focus:ring-brand-maroon outline-none bg-white text-sm">
-                      <option>Monthly (30+ Days)</option>
-                      <option>Weekly (7-28 Days)</option>
+                    <select defaultValue="Monthly (30+ Days)" className="w-full px-4 py-3 border border-gray-300 rounded-none focus:border-brand-maroon outline-none bg-white text-sm">
+                      <option value="Monthly (30+ Days)">Monthly (30+ Days)</option>
+                      <option value="Weekly (7-28 Days)">Weekly (7-28 Days)</option>
                     </select>
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-3 py-2">
-                  <input 
-                    type="checkbox" 
-                    id="different-location" 
-                    className="w-5 h-5 rounded-sm border-gray-300 text-brand-maroon focus:ring-brand-maroon"
-                  />
-                  <label htmlFor="different-location" className="text-sm font-medium text-gray-600 cursor-pointer">
-                    Return to a different location
-                  </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-sm font-bold text-gray-700 block">Start Date</label>
+                    <input 
+                      type="date"
+                      defaultValue="2025-07-01"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-none focus:border-brand-maroon outline-none text-sm input-date"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-sm font-bold text-gray-700 block">Duration</label>
+                    <select defaultValue="1 Month" className="w-full px-4 py-3 border border-gray-300 rounded-none focus:border-brand-maroon outline-none bg-white text-sm">
+                      <option value="1 Week">1 Week</option>
+                      <option value="2 Weeks">2 Weeks</option>
+                      <option value="1 Month">1 Month</option>
+                      <option value="2 Months">2 Months</option>
+                      <option value="3+ Months">3+ Months</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-1 pb-2">
+                  <label className="text-sm font-bold text-gray-700 block">Vehicle Preference</label>
+                  <select defaultValue="Executive Sedan" className="w-full px-4 py-3 border border-gray-300 rounded-none focus:border-brand-maroon outline-none bg-white text-sm">
+                    <option value="Executive Sedan">Executive Sedan</option>
+                    <option value="Luxury SUV">Luxury SUV</option>
+                    <option value="Corporate Minivan">Corporate Minivan</option>
+                    <option value="Compact Economy">Compact Economy</option>
+                  </select>
                 </div>
                 
                 <button 
                   type="submit" 
                   className="w-full py-4 bg-brand-maroon text-white font-bold text-lg hover:bg-brand-maroon-hover active:scale-[0.98] transition-all shadow-lg"
                 >
-                  Start Reservation
+                  Check Long-Term Availability
                 </button>
               </form>
             </div>

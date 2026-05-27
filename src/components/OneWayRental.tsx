@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import { Calendar, Clock, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function OneWayRental() {
   const [pickup, setPickup] = useState('');
   const [dropoff, setDropoff] = useState('');
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
 
   const heroStyle = {
     backgroundImage: 'linear-gradient(to right, rgba(139, 19, 49, 0.9) 0%, rgba(139, 19, 49, 0.6) 50%, rgba(0, 0, 0, 0.2) 100%), url("https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80")',
@@ -42,8 +49,8 @@ export default function OneWayRental() {
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <h2 className="text-3xl font-bold text-brand-maroon mb-8">Start Your One-Way Rental</h2>
           <div className="bg-white rounded-none shadow-xl border border-gray-100 p-8">
-            <form onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <form onSubmit={handleBookingSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-bold text-gray-900 mb-2">Pickup Location</label>
                   <div className="relative">
@@ -52,9 +59,8 @@ export default function OneWayRental() {
                       value={pickup}
                       onChange={(e) => setPickup(e.target.value)}
                       placeholder="e.g. Accra" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon pt-3 pb-3 pl-10 pr-3" 
+                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
                     />
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   </div>
                 </div>
                 <div>
@@ -65,63 +71,51 @@ export default function OneWayRental() {
                       value={dropoff}
                       onChange={(e) => setDropoff(e.target.value)}
                       placeholder="e.g. Kumasi" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon pt-3 pb-3 pl-10 pr-3" 
+                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
                     />
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">Pickup Date</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="mm/dd/yyyy" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">Pickup Date</label>
+                  <input 
+                    type="date" 
+                    defaultValue="2025-06-01"
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border input-date" 
+                  />
+                </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-900 mb-2">Pickup Time</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="--:-- --" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
+                  <input 
+                    type="time" 
+                    defaultValue="09:00"
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">Return Date</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="mm/dd/yyyy" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">Drop-Off Date</label>
+                  <input 
+                    type="date" 
+                    defaultValue="2025-06-03"
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border input-date" 
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">Return Time</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="--:-- --" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">Drop-Off Time</label>
+                  <input 
+                    type="time" 
+                    defaultValue="14:00"
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
+                  />
                 </div>
               </div>
               <button 
                 type="submit" 
                 className="w-full bg-brand-yellow hover:bg-brand-yellow-hover text-gray-900 font-bold text-lg py-4 transition-colors shadow-sm"
               >
-                Start Reservation
+                Search Rental Vehicles
               </button>
             </form>
           </div>

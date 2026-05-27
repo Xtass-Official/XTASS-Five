@@ -169,7 +169,7 @@ export default function VehicleDetail() {
 
           <div className="max-w-3xl mx-auto flex gap-4">
             <button 
-              onClick={() => alert("Vehicle Selected! Advancing to next step...")}
+              onClick={() => navigate('/booking/step-1')}
               className="w-full bg-brand-yellow font-black text-gray-900 py-4 px-8 hover:bg-brand-yellow-hover transition-colors shadow-lg uppercase tracking-widest text-sm flex justify-between items-center"
             >
               <span>Select This Vehicle</span>

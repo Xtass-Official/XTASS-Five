@@ -96,7 +96,7 @@ export default function CustomerDashboard() {
         <div>
            <div className="flex justify-between items-end mb-4">
                <h2 className="text-lg font-black text-gray-900 uppercase tracking-widest">Recent Routes</h2>
-               <button className="text-brand-maroon font-bold text-sm uppercase hover:underline">View History</button>
+               <button onClick={() => navigate('/trip-history')} className="text-brand-maroon font-bold text-sm uppercase hover:underline">View History</button>
            </div>
            
            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -116,7 +116,7 @@ export default function CustomerDashboard() {
                      <p className="font-bold text-gray-900 text-sm leading-snug">East Legon, Mensah Wood Ave.</p>
                   </div>
                   
-                  <button className="w-full py-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-800 font-bold uppercase tracking-wider text-xs transition-colors flex items-center justify-center">
+                  <button onClick={() => navigate('/booking/step-1')} className="w-full py-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-800 font-bold uppercase tracking-wider text-xs transition-colors flex items-center justify-center">
                     <Navigation className="w-3 h-3 mr-2 text-brand-maroon" /> Book Same Route
                   </button>
                 </div>

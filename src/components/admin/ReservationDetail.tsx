@@ -38,7 +38,7 @@ export default function ReservationDetail() {
            <div className="bg-white border border-gray-200 shadow-sm p-6">
               <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
                  <h2 className="text-sm font-black text-gray-900 uppercase tracking-widest">Customer Profile</h2>
-                 <Link to="#" className="text-xs font-bold text-brand-maroon uppercase tracking-wider hover:underline">View Profile</Link>
+                 <Link to="/admin/customers/CUST-1049" className="text-xs font-bold text-brand-maroon uppercase tracking-wider hover:underline">View Profile</Link>
               </div>
               <div className="flex items-start">
                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mr-4 shrink-0">

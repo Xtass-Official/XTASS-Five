@@ -250,7 +250,7 @@ export default function AdminDashboard() {
                        <p className="text-2xl font-black text-red-700 mb-1">3 Alerts</p>
                        <p className="text-sm text-red-800 font-medium mb-6">Bookings awaiting driver assignment.</p>
                     </div>
-                    <Link to="#" className="w-full bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest text-xs py-3 transition-colors shadow-sm cursor-pointer block text-center">
+                    <Link to="/admin/reservations" className="w-full bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest text-xs py-3 transition-colors shadow-sm cursor-pointer block text-center">
                        Assign Now
                     </Link>
                  </div>

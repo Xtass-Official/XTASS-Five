@@ -23,9 +23,7 @@ export default function PaymentProcessing() {
   useEffect(() => {
     if (status === 'success') {
       const timer2 = setTimeout(() => {
-        // Mock navigate to a confirmation page or home
-        navigate('/'); 
-        alert("Navigated to Booking Confirmation (Mock)");
+        navigate('/booking-confirmation'); 
       }, 1500);
       return () => clearTimeout(timer2);
     }

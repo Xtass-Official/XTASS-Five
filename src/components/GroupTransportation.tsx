@@ -1,7 +1,14 @@
 import { Users, Building2, Map, CalendarHeart, Briefcase } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function GroupTransportation() {
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
+
   const heroStyle = {
     backgroundImage: 'linear-gradient(to right, rgba(139, 19, 49, 0.9) 0%, rgba(139, 19, 49, 0.6) 50%, rgba(0, 0, 0, 0.2) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCX3toRGSRZrTnfFlT8NYANeRVKghwK06f9wqUnUzUFApapgRjnmwnDJ4UDUEzyualkG2vdiRw4tqcSXreAcQ8gmU8vtfL2lu4U2Gv6-AEJNgaYzH9CMvxzFlxuQP6uL9-AcQ-8SVHAmmkZyoLR85bTgrPjg_Rvo_iT243mdClfjk8jeC5154smyKF0OxZArhii7fe8ou7M3OgQcJ8AtjZhG7FwSLF5aoaMRZuUfTcgruc4q2be3fYcKA8efdu6D0IWM73TVQqFTh4")',
     backgroundSize: 'cover',
@@ -25,13 +32,81 @@ export default function GroupTransportation() {
             <p className="text-lg md:text-xl mb-8 leading-relaxed">
               Larger vehicles, flexible coordination, and comfortable group travel for any occasion.
             </p>
-            <Link 
-              to="/" 
+            <button 
+              onClick={() => document.getElementById('group-form')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-block bg-brand-yellow text-gray-900 font-bold text-sm px-8 py-3.5 hover:bg-brand-yellow-hover transition duration-300 shadow-sm"
             >
               Book Group Ride
-            </Link>
+            </button>
           </div>
+        </div>
+      </section>
+
+      {/* Booking Form Section */}
+      <section id="group-form" className="relative z-10 max-w-[64rem] mx-auto px-4 -mt-16 mb-16">
+        <div className="bg-white p-8 shadow-2xl border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Group & Event Transport Request</h2>
+          <form onSubmit={handleBookingSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Event / Main Pickup Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="Accra International Conference Centre"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+               <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Destination Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="Peduase Lodge"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+
+              <div className="flex flex-col md:col-span-2">
+                <label className="text-sm font-bold text-gray-900 mb-2">Group Details</label>
+                 <div className="grid grid-cols-2 gap-4">
+                   <select defaultValue="10-20 Passengers" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="5-9 Passengers">5-9 Passengers</option>
+                     <option value="10-20 Passengers">10-20 Passengers</option>
+                     <option value="20-50 Passengers">20-50 Passengers</option>
+                     <option value="50+ Passengers">50+ Passengers</option>
+                   </select>
+                   <select defaultValue="Conference / Corporate" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="Conference / Corporate">Conference / Corporate</option>
+                     <option value="Wedding / Celebration">Wedding / Celebration</option>
+                     <option value="Tour / Sightseeing">Tour / Sightseeing</option>
+                     <option value="Airport Group Transfer">Airport Group Transfer</option>
+                   </select>
+                 </div>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Start Date</label>
+                <input 
+                  type="date" 
+                  defaultValue="2025-08-10"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">End Date (Optional)</label>
+                <input 
+                  type="date" 
+                  defaultValue="2025-08-12"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date"
+                />
+              </div>
+            </div>
+            <div className="mt-8">
+              <button type="submit" className="w-full bg-brand-maroon hover:bg-brand-maroon-hover text-white font-bold text-lg py-4 transition-colors uppercase tracking-wide">
+                Request Transport Quote
+              </button>
+              <p className="text-xs text-center text-gray-500 mt-4">Our specialized group transportation team will contact you within 24 hours.</p>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -132,12 +207,12 @@ export default function GroupTransportation() {
           <p className="text-white/80 text-lg mb-8">
             Contact our support team directly for bespoke group transport arrangements.
           </p>
-          <Link 
-            to="/" 
+          <button 
+            onClick={() => document.getElementById('group-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-block bg-brand-yellow text-gray-900 font-bold text-sm px-10 py-3.5 hover:bg-brand-yellow-hover transition duration-300 shadow-sm"
           >
-            Contact Support
-          </Link>
+            Get a Quote
+          </button>
         </div>
       </section>
     </main>

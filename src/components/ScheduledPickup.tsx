@@ -1,7 +1,14 @@
 import { Check, Calendar, Clock, Bell, Plane } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ScheduledPickup() {
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
+
   return (
     <main className="flex-grow">
       {/* Service Hero */}
@@ -22,13 +29,78 @@ export default function ScheduledPickup() {
             <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg">
               Book your ride in advance. Choose your exact pickup time, date, and destination, and we'll ensure a driver is waiting for you when you need it.
             </p>
-            <Link 
-              to="/" 
+            <button 
+              onClick={() => document.getElementById('scheduled-form')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-block bg-brand-yellow text-gray-900 font-bold text-sm px-8 py-3.5 hover:bg-brand-yellow-hover transition-colors shadow-sm"
             >
               Book Now
-            </Link>
+            </button>
           </div>
+        </div>
+      </section>
+
+      {/* Booking Form Section */}
+      <section id="scheduled-form" className="relative z-10 max-w-[64rem] mx-auto px-4 -mt-16 mb-16">
+        <div className="bg-white p-8 shadow-2xl border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Schedule Your Pickup</h2>
+          <form onSubmit={handleBookingSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Date</label>
+                <input 
+                  type="date" 
+                  defaultValue="2025-06-15"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Time</label>
+                 <input 
+                  type="time" 
+                  defaultValue="14:30"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="Kempinski Hotel Gold Coast City"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop Off Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="Accra International Conference Centre"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+              <div className="flex flex-col md:col-span-2">
+                <label className="text-sm font-bold text-gray-900 mb-2">Service Class & Preferences</label>
+                 <div className="grid grid-cols-2 gap-4">
+                   <select defaultValue="Business" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="Premium">Premium</option>
+                     <option value="Business">Business</option>
+                     <option value="Economy">Economy</option>
+                   </select>
+                   <select defaultValue="2" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="1">1 Passenger</option>
+                     <option value="2">2 Passengers</option>
+                     <option value="3">3 Passengers</option>
+                     <option value="4+">4+ Passengers</option>
+                   </select>
+                 </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              <button type="submit" className="w-full bg-brand-maroon hover:bg-brand-maroon-hover text-white font-bold text-lg py-4 transition-colors uppercase tracking-wide">
+                Confirm Schedule
+              </button>
+              <p className="text-xs text-center text-gray-500 mt-4">Cancellations up to 2 hours before the scheduled time are free of charge.</p>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -128,12 +200,12 @@ export default function ScheduledPickup() {
           <h2 className="text-4xl font-bold text-white mb-4">Ready to Schedule?</h2>
           <p className="text-white/80 mb-10 text-lg font-medium">Book ahead to ensure a safe and reliable ride for your important events.</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Link 
-              to="/" 
+            <button 
+              onClick={() => document.getElementById('scheduled-form')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-brand-yellow text-gray-900 font-bold px-8 py-3.5 hover:bg-brand-yellow-hover transition-colors w-full sm:w-auto shadow-sm tracking-wide"
             >
               Book Now
-            </Link>
+            </button>
           </div>
         </div>
       </section>

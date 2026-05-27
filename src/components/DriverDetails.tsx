@@ -148,7 +148,7 @@ export default function DriverDetails() {
 
         {/* Action Button */}
         <button 
-          onClick={() => alert("Booking Confirmed!")}
+          onClick={() => navigate('/booking-confirmation')}
           className="w-full bg-brand-yellow font-black text-gray-900 py-4 px-8 hover:bg-brand-yellow-hover transition-colors shadow-lg uppercase tracking-widest text-sm text-center"
         >
           Confirm This Booking

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Plus, X, CarFront, Check, ChevronRight, Award } from 'lucide-react';
 
 interface VehicleStats {
@@ -27,6 +27,7 @@ const MOCK_COMPARISON: VehicleStats[] = [
 ];
 
 export default function VehicleComparison() {
+  const navigate = useNavigate();
   const [vehicles, setVehicles] = useState<VehicleStats[]>(MOCK_COMPARISON);
 
   const removeVehicle = (id: string) => {
@@ -157,7 +158,7 @@ export default function VehicleComparison() {
                   <th className="py-6 px-6 border-r border-gray-200 bg-gray-50 font-bold text-gray-500 uppercase tracking-widest text-xs border-b-0"></th>
                   {vehicles.map(v => (
                      <td key={v.id} className="p-4 border-t border-gray-200 align-top">
-                       <button onClick={() => alert(`Proceeding with ${v.name}`)} className="w-full bg-brand-yellow hover:bg-brand-yellow-hover font-black text-gray-900 py-3 uppercase tracking-wider text-xs transition-colors flex items-center justify-center">
+                       <button onClick={() => navigate('/booking/step-1')} className="w-full bg-brand-yellow hover:bg-brand-yellow-hover font-black text-gray-900 py-3 uppercase tracking-wider text-xs transition-colors flex items-center justify-center">
                          Select <ChevronRight className="w-4 h-4 ml-1" />
                        </button>
                      </td>

@@ -1,7 +1,14 @@
 import { Check } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function AirportTransfers() {
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
+
   const airports = [
     { name: "Kotoka Int'l Airport", region: "Greater Accra" },
     { name: "Kumasi Airport", region: "Ashanti Region" },
@@ -34,13 +41,101 @@ export default function AirportTransfers() {
             <p className="text-lg md:text-xl mb-8 leading-relaxed">
               Any time, any airport, flight tracking included. XTASS gets you there — and back.
             </p>
-            <Link 
-              to="/" 
+            <button 
+              onClick={() => document.getElementById('airport-form')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-block bg-brand-yellow text-gray-900 font-bold text-sm px-8 py-3.5 hover:bg-brand-yellow-hover transition duration-300 shadow-sm"
             >
               Book Now
-            </Link>
+            </button>
           </div>
+        </div>
+      </section>
+
+      {/* Booking Form Section */}
+      <section id="airport-form" className="relative z-10 max-w-[64rem] mx-auto px-4 -mt-16 mb-16">
+        <div className="bg-white p-8 shadow-2xl border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Book Airport Transfer</h2>
+          <form onSubmit={handleBookingSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Direction</label>
+                 <select defaultValue="From Airport" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="To Airport">To Airport</option>
+                   <option value="From Airport">From Airport</option>
+                 </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Airport</label>
+                 <select defaultValue="Kotoka Int'l Airport" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                  <option value="Kotoka Int'l Airport">Kotoka Int'l Airport</option>
+                  <option value="Kumasi Airport">Kumasi Airport</option>
+                  <option value="Tamale Airport">Tamale Airport</option>
+                  <option value="Takoradi Airport">Takoradi Airport</option>
+                  <option value="Wa Airport">Wa Airport</option>
+                  <option value="Sunyani Airport">Sunyani Airport</option>
+                 </select>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Address / Hotel</label>
+                <input 
+                  type="text" 
+                  defaultValue="Labadi Beach Hotel"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Flight Number</label>
+                <input 
+                  type="text" 
+                  placeholder="e.g. BA081"
+                  defaultValue="BA081"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Date</label>
+                <input 
+                  type="date" 
+                  defaultValue="2025-06-20"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Time (Flight Arrival/Departure)</label>
+                 <input 
+                  type="time" 
+                  defaultValue="10:00"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+              
+              <div className="flex flex-col md:col-span-2">
+                <label className="text-sm font-bold text-gray-900 mb-2">Luggage & Passengers</label>
+                 <div className="grid grid-cols-2 gap-4">
+                   <select defaultValue="2 Passengers" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="1 Passenger">1 Passenger</option>
+                     <option value="2 Passengers">2 Passengers</option>
+                     <option value="3-4 Passengers">3-4 Passengers</option>
+                     <option value="5+ Passengers">5+ Passengers</option>
+                   </select>
+                   <select defaultValue="2 Large, 1 Small" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="Carry-on Only">Carry-on Only</option>
+                     <option value="1-2 Large Bags">1-2 Large Bags</option>
+                     <option value="2 Large, 1 Small">2 Large, 1 Small</option>
+                     <option value="Lots of Luggage">Lots of Luggage (Van Required)</option>
+                   </select>
+                 </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              <button type="submit" className="w-full bg-brand-maroon hover:bg-brand-maroon-hover text-white font-bold text-lg py-4 transition-colors uppercase tracking-wide">
+                Complete Booking
+              </button>
+              <p className="text-xs text-center text-gray-500 mt-4">We actively track your flight to adjust pickup times in case of delays.</p>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -115,12 +210,12 @@ export default function AirportTransfers() {
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-white mb-4">Book Your Airport Transfer</h2>
           <p className="text-white/80 text-lg mb-8">Stress-free airport transport, every time.</p>
-          <Link 
-            to="/" 
+          <button 
+            onClick={() => document.getElementById('airport-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-block bg-brand-yellow text-gray-900 font-bold text-sm px-10 py-3.5 hover:bg-brand-yellow-hover transition duration-300 shadow-sm"
           >
             Book Now
-          </Link>
+          </button>
         </div>
       </section>
     </main>

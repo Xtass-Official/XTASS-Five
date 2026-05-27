@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function WeekendRental() {
   const [pickupLocation, setPickupLocation] = useState('');
   const [dropoffLocation, setDropoffLocation] = useState('');
   const [pickupDate, setPickupDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
 
   useEffect(() => {
     const today = new Date();
@@ -25,7 +32,7 @@ export default function WeekendRental() {
     followingSunday.setDate(nextFriday.getDate() + 2);
 
     const formatDate = (date: Date) => {
-      return `${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}/${date.getFullYear()}`;
+      return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     };
 
     setPickupDate(formatDate(nextFriday));
@@ -69,7 +76,7 @@ export default function WeekendRental() {
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <h2 className="text-3xl font-bold text-brand-maroon mb-8">Start Your Weekend Getaway</h2>
           <div className="bg-white rounded-none shadow-xl border border-gray-100 p-8">
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleBookingSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-bold text-gray-900 mb-2">Pickup Location</label>
@@ -79,9 +86,8 @@ export default function WeekendRental() {
                       value={pickupLocation}
                       onChange={(e) => setPickupLocation(e.target.value)}
                       placeholder="e.g. Accra Mall" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon pt-3 pb-3 pl-10 pr-3" 
+                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
                     />
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   </div>
                 </div>
                 <div>
@@ -92,60 +98,45 @@ export default function WeekendRental() {
                       value={dropoffLocation}
                       onChange={(e) => setDropoffLocation(e.target.value)}
                       placeholder="e.g. Kotoka Int'l Airport" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon pt-3 pb-3 pl-10 pr-3" 
+                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
                     />
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   </div>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 <div>
                   <label className="block text-sm font-bold text-gray-900 mb-2">Pickup Date</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      value={pickupDate}
-                      onChange={(e) => setPickupDate(e.target.value)}
-                      placeholder="mm/dd/yyyy" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
+                  <input 
+                    type="date" 
+                    value={pickupDate}
+                    onChange={(e) => setPickupDate(e.target.value)}
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border input-date" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-900 mb-2">Pickup Time</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="17:00 PM" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
+                  <input 
+                    type="time" 
+                    defaultValue="17:00" 
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-900 mb-2">Return Date</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      value={returnDate}
-                      onChange={(e) => setReturnDate(e.target.value)}
-                      placeholder="mm/dd/yyyy" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
+                  <input 
+                    type="date" 
+                    value={returnDate}
+                    onChange={(e) => setReturnDate(e.target.value)}
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border input-date" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-900 mb-2">Return Time</label>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="18:00 PM" 
-                      className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon py-3 pr-10" 
-                    />
-                    <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  </div>
+                  <input 
+                    type="time" 
+                    defaultValue="18:00" 
+                    className="w-full border-gray-300 rounded-none shadow-sm focus:border-brand-maroon focus:ring-brand-maroon p-3 border" 
+                  />
                 </div>
               </div>
               <button 

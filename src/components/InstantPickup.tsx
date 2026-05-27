@@ -1,6 +1,14 @@
 import { Check } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function InstantPickup() {
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
+
   return (
     <main className="flex-grow">
       {/* Hero Section */}
@@ -21,10 +29,61 @@ export default function InstantPickup() {
             <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg">
               Book immediately — the nearest available XTASS driver is dispatched straight to your location.
             </p>
-            <button className="bg-brand-yellow text-gray-900 font-bold text-sm px-8 py-3 hover:bg-brand-yellow-hover transition-colors shadow-sm">
-              Book Now
+            <button className="bg-brand-yellow text-gray-900 font-bold text-sm px-8 py-3 hover:bg-brand-yellow-hover transition-colors shadow-sm" onClick={() => document.getElementById('instant-form')?.scrollIntoView({ behavior: 'smooth' })}>
+              Request Pickup Now
             </button>
           </div>
+        </div>
+      </section>
+
+      {/* Booking Form Section */}
+      <section id="instant-form" className="relative z-10 max-w-[64rem] mx-auto px-4 -mt-16 mb-16">
+        <div className="bg-white p-8 shadow-2xl border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Request Instant Pickup</h2>
+          <form onSubmit={handleBookingSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="East Legon, Accra"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop Off Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="Kotoka International Airport"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Service Class</label>
+                 <select defaultValue="Premium" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="Premium">Premium</option>
+                   <option value="Business">Business</option>
+                   <option value="Economy">Economy</option>
+                   <option value="Basic">Basic</option>
+                 </select>
+              </div>
+               <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Passengers</label>
+                 <select defaultValue="1" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                   <option value="1">1 Passenger</option>
+                   <option value="2">2 Passengers</option>
+                   <option value="3">3 Passengers</option>
+                   <option value="4+">4+ Passengers</option>
+                 </select>
+              </div>
+            </div>
+            <div className="mt-8">
+              <button type="submit" className="w-full bg-brand-maroon hover:bg-brand-maroon-hover text-white font-bold text-lg py-4 transition-colors uppercase tracking-wide">
+                Find Nearest Driver
+              </button>
+              <p className="text-xs text-center text-gray-500 mt-4">By booking, you agree to XTASS Terms and Conditions. Your driver will arrive shortly after request.</p>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -100,7 +159,7 @@ export default function InstantPickup() {
           <h2 className="text-4xl font-bold text-white mb-4">Ready to Ride?</h2>
           <p className="text-white/80 mb-10 text-lg font-medium">Tap once, ride in minutes. Your driver is already nearby.</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <button className="bg-brand-yellow text-gray-900 font-bold px-8 py-3.5 hover:bg-brand-yellow-hover transition-colors w-full sm:w-auto shadow-sm tracking-wide">
+            <button className="bg-brand-yellow text-gray-900 font-bold px-8 py-3.5 hover:bg-brand-yellow-hover transition-colors w-full sm:w-auto shadow-sm tracking-wide" onClick={() => document.getElementById('instant-form')?.scrollIntoView({ behavior: 'smooth' })}>
               Book Now
             </button>
             <button className="border-2 border-white text-white font-bold px-8 py-3.5 hover:bg-white hover:text-brand-maroon transition-colors w-full sm:w-auto shadow-sm tracking-wide">

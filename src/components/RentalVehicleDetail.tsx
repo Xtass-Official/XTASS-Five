@@ -213,7 +213,7 @@ export default function RentalVehicleDetail() {
             </div>
 
             <button 
-              onClick={() => alert("Vehicle Selected! Advancing to Extras...")}
+              onClick={() => navigate('/booking/step-1')}
               className="w-full bg-brand-yellow font-black text-gray-900 py-5 px-8 hover:bg-brand-yellow-hover transition-colors shadow-lg uppercase tracking-widest text-sm flex justify-center items-center group"
             >
               <span>Reserve This Vehicle</span>

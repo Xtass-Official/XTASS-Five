@@ -1,16 +1,97 @@
 import { HeartHandshake, Phone, Mail, ArrowRight, CheckCircle2, Car } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function AccessibilityServices() {
+  const navigate = useNavigate();
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/booking/step-1');
+  };
+
   return (
     <main className="flex-grow bg-gray-50 pb-24">
       {/* Hero Section */}
       <section className="bg-brand-maroon text-white pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+          <p className="uppercase tracking-widest text-sm font-semibold mb-2 opacity-90 text-brand-yellow">XTASS Services</p>
           <h1 className="text-4xl md:text-5xl font-black mb-6 tracking-tight uppercase">Accessibility Transport</h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-medium">
+          <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-medium mb-8">
             Inclusive mobility for everyone. Safe, comfortable, and reliable transport for passengers with special needs.
           </p>
+          <button 
+            onClick={() => document.getElementById('accessibility-form')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-block bg-brand-yellow text-gray-900 font-bold text-sm px-8 py-3.5 hover:bg-brand-yellow-hover transition duration-300 shadow-sm"
+          >
+            Request Accessible Ride
+          </button>
+        </div>
+      </section>
+
+      {/* Booking Form Section */}
+      <section id="accessibility-form" className="relative z-10 max-w-[64rem] mx-auto px-4 -mt-8 mb-16">
+        <div className="bg-white p-8 shadow-2xl border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Request Accessible Transport</h2>
+          <form onSubmit={handleBookingSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="Korle Bu Teaching Hospital"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+               <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Drop Off Location</label>
+                <input 
+                  type="text" 
+                  defaultValue="Cantonments"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Date</label>
+                <input 
+                  type="date" 
+                  defaultValue="2025-06-12"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-bold text-gray-900 mb-2">Pick Up Time</label>
+                <input 
+                  type="time" 
+                  defaultValue="10:30"
+                  className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow input-date"
+                />
+              </div>
+
+              <div className="flex flex-col md:col-span-2">
+                <label className="text-sm font-bold text-gray-900 mb-2">Special Requirements</label>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                   <select defaultValue="Wheelchair Accessible Van" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="Wheelchair Accessible Van">Wheelchair Accessible Van (Ramp Equipped)</option>
+                     <option value="Transfer Assistance to Sedan">Transfer Assistance to Premium Sedan</option>
+                     <option value="Child Safety Seat">Child Safety Seat Required</option>
+                   </select>
+                   <select defaultValue="No additional mobility aides" className="w-full border border-gray-200 p-3 text-sm focus:outline-none focus:border-brand-yellow">
+                     <option value="No additional mobility aides">No additional mobility aides</option>
+                     <option value="Traveling with Service Animal">Traveling with Service Animal</option>
+                     <option value="Walker / Crutches Support">Walker / Crutches Storage</option>
+                     <option value="Vision/Hearing Impaired Assistance">Vision/Hearing Impaired Assistance</option>
+                   </select>
+                 </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              <button type="submit" className="w-full bg-brand-maroon hover:bg-brand-maroon-hover text-white font-bold text-lg py-4 transition-colors uppercase tracking-wide">
+                Submit Request
+              </button>
+              <p className="text-xs text-center text-gray-500 mt-4">For immediate or highly specific medical transport needs, please contact support directly.</p>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -78,9 +159,12 @@ export default function AccessibilityServices() {
                 </li>
               </ol>
               <div className="mt-10">
-                <Link to="/start-reservation" className="inline-flex items-center text-brand-maroon-dark bg-brand-yellow px-8 py-3 font-bold uppercase tracking-wider text-sm hover:bg-brand-yellow-hover transition-colors">
+                <button 
+                  onClick={() => document.getElementById('accessibility-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex items-center text-brand-maroon-dark bg-brand-yellow px-8 py-3 font-bold uppercase tracking-wider text-sm hover:bg-brand-yellow-hover transition-colors"
+                >
                   Book Now <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
+                </button>
               </div>
             </div>
             
